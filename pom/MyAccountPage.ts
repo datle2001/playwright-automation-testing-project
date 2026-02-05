@@ -29,7 +29,7 @@ export class MyAccountPage {
   }
 
   async waitForPasswordStrengthMessage() {
-    await this.message_PasswordStrength.waitFor({ state: "visible" });
+    await expect(this.message_PasswordStrength).toBeVisible()
   }
 
   async clickRegisterButton() {
@@ -37,15 +37,15 @@ export class MyAccountPage {
   }
 
   async verifyEmptyEmailMessageDisplayed() {
-    await this.message_EmptyEmail.waitFor({ state: "visible" });
+    await expect(this.message_EmptyEmail).toBeVisible()
   }
 
   async verifyEmptyPasswordMessageDisplayed() {
-    await this.message_EmptyPassword.waitFor({ state: "visible" });
+    await expect(this.message_EmptyPassword).toBeVisible()
   }
 
   async waitForPageDisplayed() {
-    await this.button_Register.waitFor({ state: "visible" });
+    await expect(this.button_Register).toBeVisible()
   }
 
   async verifyInvalidEmailMessageDisplayed() {

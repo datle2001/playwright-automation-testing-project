@@ -10,6 +10,6 @@ export class MyAccountLoggedInPage {
   }
 
   async waitForPageDisplayed() {
-    await this.text_WelcomeMessage.waitFor({ state: "visible" });
+    await expect(this.text_WelcomeMessage).toBeVisible()
   }
 }
