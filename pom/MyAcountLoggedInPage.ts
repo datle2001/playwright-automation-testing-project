@@ -2,14 +2,26 @@ import { expect, Locator, Page } from "@playwright/test";
 
 export class MyAccountLoggedInPage {
   private readonly text_WelcomeMessage: Locator;
+  private readonly singoutLink: Locator;
+  private readonly dashboardLink: Locator;
 
   constructor(private readonly page: Page) {
     this.text_WelcomeMessage = this.page.getByText(
-      /Hello [a-z0-9]+ \(not [a-z0-9]+\? Sign out\)/
+      /Hello [a-z0-9]+ \(not [a-z0-9]+\? Sign out\)/,
     );
+    this.singoutLink = this.page.getByRole("link", { name: "Sign out" });
+    this.dashboardLink = this.page.getByRole("link", { name: "Dashboard" });
   }
 
   async waitForPageDisplayed() {
-    await this.text_WelcomeMessage.waitFor({ state: "visible" });
+    await expect(this.text_WelcomeMessage).toBeVisible();
+  }
+
+  async clickSignOutLink() {
+    await this.singoutLink.click();
+  }
+
+  async clickDashboardLink() {
+    await this.dashboardLink.click();
   }
 }
