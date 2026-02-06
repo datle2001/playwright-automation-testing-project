@@ -105,6 +105,7 @@ loginTest(
     await myAccountPage.clickLoginButton();
     await myAccountLoggedInPage.waitForPageDisplayed();
     await myAccountLoggedInPage.clickSignOutLink();
+    await myAccountPage.waitForPageDisplayed();
     await page.goBack();
     await myAccountPage.waitForPageDisplayed();
   },
