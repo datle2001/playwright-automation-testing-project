@@ -4,6 +4,7 @@ export class MyAccountLoggedInPage {
   private readonly text_WelcomeMessage: Locator;
   private readonly singoutLink: Locator;
   private readonly dashboardLink: Locator;
+  private readonly ordersLink: Locator;
 
   constructor(private readonly page: Page) {
     this.text_WelcomeMessage = this.page.getByText(
@@ -11,6 +12,7 @@ export class MyAccountLoggedInPage {
     );
     this.singoutLink = this.page.getByRole("link", { name: "Sign out" });
     this.dashboardLink = this.page.getByRole("link", { name: "Dashboard" });
+    this.ordersLink = this.page.getByRole("link", { name: "Orders" });
   }
 
   async waitForPageDisplayed() {
@@ -23,5 +25,9 @@ export class MyAccountLoggedInPage {
 
   async clickDashboardLink() {
     await this.dashboardLink.click();
+  }
+
+  async clickOrdersLink() {
+    await this.ordersLink.click();
   }
 }
