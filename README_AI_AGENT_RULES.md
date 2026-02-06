@@ -14,6 +14,7 @@ Core Rules for AI agents
 8. If a change is large or risky, propose it first and ask for confirmation before applying.
 9. Add or update tests alongside code changes; keep tests passing. If you cannot run tests, explain why and provide run commands.
 10. Keep messages concise and provide a one-line preamble before making tool calls.
+11. When introducing new project rules (like POM naming), add them to this `README_AI_AGENT_RULES.md` so AI agents and contributors discover them centrally.
 
 Checklist before making edits
 - Create a short TODO via `manage_todo_list` when task has multiple steps.
@@ -22,6 +23,22 @@ Checklist before making edits
 - Use descriptive commit messages or tell the user what you changed.
 
 Coding standards
+
+POM Naming Rules
+================
+
+- Note: Repository policy requires any new project rules to be recorded in `README_AI_AGENT_RULES.md`.
+
+- Rule: All Page Object Model (POM) classes MUST end with either "Page" or "Panel".
+- Rationale: This naming convention makes POM roles explicit and keeps the codebase consistent.
+- Scope: Applies to files under `pom/` and any POM classes added to the project.
+- Change process: If you want to update this rule, edit this file and update any affected classes.
+
+Examples:
+- `MyAccountPage` (valid)
+- `NavigationPanel` (valid)
+- `ShopPage` (valid)
+- `Shop` (invalid — must be renamed to `ShopPage`)
 
 How to run tests locally (recommended)
 ```bash

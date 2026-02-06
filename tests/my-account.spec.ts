@@ -1,4 +1,4 @@
-import { test } from "../fixtures/registration";
+import { baseTest as test } from "../fixtures/baseTest";
 import { OrdersPage } from "../pom/OrdersPage";
 
 const myAccountTest = test.extend<{ autoLoginFixture: null; ordersPage: OrdersPage }>(
@@ -31,11 +31,7 @@ myAccountTest(
 );
 
 myAccountTest("My Account - View Orders", async ({ navigationPanel, myAccountLoggedInPage, ordersPage }) => {
-  // autoLoginFixture logs the user in before this test runs
-  // Ensure we're on the My Account page
   await navigationPanel.navigateToMyAccount();
-
-  // Click Orders and verify orders are displayed
   await myAccountLoggedInPage.clickOrdersLink();
   await ordersPage.waitForOrdersDisplayed();
 });

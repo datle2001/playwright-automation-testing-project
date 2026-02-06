@@ -12,7 +12,7 @@ export class MyAccountLoggedInPage {
     );
     this.singoutLink = this.page.getByRole("link", { name: "Sign out" });
     this.dashboardLink = this.page.getByRole("link", { name: "Dashboard" });
-    this.ordersLink = this.page.getByRole("link", { name: "Orders" });
+    this.ordersLink = this.page.getByRole("link", { name: "Orders", exact: true });
   }
 
   async waitForPageDisplayed() {

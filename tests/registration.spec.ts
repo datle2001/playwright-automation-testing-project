@@ -1,4 +1,4 @@
-import { test } from "../fixtures/registration";
+import { baseTest as test } from "../fixtures/baseTest";
 import { RandomUtilities } from "../utilities/RandomUtilities";
 
 test("Users register successfully and are navigated to Home page", async ({

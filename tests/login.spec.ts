@@ -1,4 +1,4 @@
-import { test } from "../fixtures/registration.ts";
+import { baseTest as test } from "../fixtures/baseTest";
 import { DataUtilities } from "../utilities/DataUtilities.ts";
 import { RandomUtilities } from "../utilities/RandomUtilities";
 
