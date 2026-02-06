@@ -3,9 +3,9 @@ import { DataUtilities } from "../utilities/DataUtilities.ts";
 import { RandomUtilities } from "../utilities/RandomUtilities";
 
 const loginTest = test.extend<{
-  autoRegistrationFixture: { username: string; password: string };
+  autoRegisterFixture: { username: string; password: string };
 }>({
-  autoRegistrationFixture: [
+  autoRegisterFixture: [
     async ({ myAccountPage, myAccountLoggedInPage }, use) => {
       const EMAIL_ADDRESS = RandomUtilities.generateRandomEmail();
       const PASSWORD = RandomUtilities.getPassword();
@@ -25,10 +25,10 @@ const loginTest = test.extend<{
 
 loginTest(
   "Log-in with valid username and password.",
-  async ({ myAccountPage, myAccountLoggedInPage, autoRegistrationFixture }) => {
+  async ({ myAccountPage, myAccountLoggedInPage, autoRegisterFixture }) => {
     await myAccountPage.enterLoginDetails(
-      autoRegistrationFixture.username,
-      autoRegistrationFixture.password,
+      autoRegisterFixture.username,
+      autoRegisterFixture.password,
     );
     await myAccountPage.clickLoginButton();
     await myAccountLoggedInPage.waitForPageDisplayed();
@@ -37,9 +37,9 @@ loginTest(
 
 loginTest(
   "Log-in with invalid username and invalid password.",
-  async ({ myAccountPage, autoRegistrationFixture }) => {
-    const INVALID_USER_NAME = autoRegistrationFixture.username + "invalid";
-    const INVALID_PASSWORD = autoRegistrationFixture.password + "invalid";
+  async ({ myAccountPage, autoRegisterFixture }) => {
+    const INVALID_USER_NAME = autoRegisterFixture.username + "invalid";
+    const INVALID_PASSWORD = autoRegisterFixture.password + "invalid";
     await myAccountPage.enterLoginDetails(INVALID_USER_NAME, INVALID_PASSWORD);
     await myAccountPage.clickLoginButton();
     await myAccountPage.verifyInvalidUsernameDisplayed();
@@ -48,8 +48,8 @@ loginTest(
 
 loginTest(
   "Log-in with correct username and empty password.",
-  async ({ myAccountPage, autoRegistrationFixture }) => {
-    await myAccountPage.enterLoginDetails(autoRegistrationFixture.username, "");
+  async ({ myAccountPage, autoRegisterFixture }) => {
+    await myAccountPage.enterLoginDetails(autoRegisterFixture.username, "");
     await myAccountPage.clickLoginButton();
     await myAccountPage.verifyEmptyLoginPasswordMessageDisplayed();
   },
@@ -57,8 +57,8 @@ loginTest(
 
 loginTest(
   "Log-in with empty username and correct password.",
-  async ({ myAccountPage, autoRegistrationFixture }) => {
-    await myAccountPage.enterLoginDetails("", autoRegistrationFixture.password);
+  async ({ myAccountPage, autoRegisterFixture }) => {
+    await myAccountPage.enterLoginDetails("", autoRegisterFixture.password);
     await myAccountPage.clickLoginButton();
     await myAccountPage.verifyEmptyLoginUsernameMessageDisplayed();
   },
@@ -80,10 +80,10 @@ test("Log-in -Password should be masked", async ({ myAccountPage }) => {
 
 loginTest(
   "Login-Handles case sensitive",
-  async ({ myAccountPage, autoRegistrationFixture }) => {
+  async ({ myAccountPage, autoRegisterFixture }) => {
     await myAccountPage.enterLoginDetails(
-      autoRegistrationFixture.username.toUpperCase(),
-      autoRegistrationFixture.password.toUpperCase(),
+      autoRegisterFixture.username.toUpperCase(),
+      autoRegisterFixture.password.toUpperCase(),
     );
     await myAccountPage.clickLoginButton();
     await myAccountPage.verifyIncorrectUsernamePasswordMessageDisplayed();
@@ -95,12 +95,12 @@ loginTest(
   async ({
     myAccountPage,
     myAccountLoggedInPage,
-    autoRegistrationFixture,
+    autoRegisterFixture,
     page,
   }) => {
     await myAccountPage.enterLoginDetails(
-      autoRegistrationFixture.username,
-      autoRegistrationFixture.password,
+      autoRegisterFixture.username,
+      autoRegisterFixture.password,
     );
     await myAccountPage.clickLoginButton();
     await myAccountLoggedInPage.waitForPageDisplayed();
